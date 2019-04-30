@@ -1,0 +1,11 @@
+syntax: glob
+.DS_Store
+*.iml
+.idea
+.idea/
+**/*.*~
+**/*.swp
+cmake-build-debug
+syntax: regexp
+^target$
+

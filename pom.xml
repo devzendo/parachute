@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.devzendo</groupId>
+    <artifactId>parachute-package</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Parachute Parallel Programming System</name>
+    <description>This is an emulator of the 32-bit Inmos T414/T800/T801/T805 Transputer family, 
+        a Node Server that interfaces it to a host OS, providing boot/debug/IO facilities.
+        Also several example programs.
+        A macro assembler that understands a subset of MASM 6 directives, for
+        building for the Transputer.
+        A port of eForth to the above emulator.
+        (Apache License v2) 2005-2019 Matt Gumbley, DevZendo.org
+    </description>
+    <url>https://devzendo.github.io/parachute</url>
+
+    <organization>
+        <name>DevZendo.org</name>
+        <url>http://devzendo.org/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://bitbucket.org/devzendo/parachute-package/</url>
+        <connection>scm:hg:https://bitbucket.org/devzendo/parachute-package/</connection>
+        <developerConnection>scm:hg:https://bitbucket.org/devzendo/parachute-package/</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <id>matt.gumbley</id>
+            <name>Matt Gumbley</name>
+            <email>matt.gumbley@devzendo.org</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <cmake.binary.dir>cmake-build-debug</cmake.binary.dir>
+        <download.cmake>false</download.cmake>
+    </properties>
+
+    <!-- use mvn enforcer:display-info to find platform name/family values -->
+    <!-- CentOS 7:
+         [INFO] Maven Version: 3.6.0
+         [INFO] JDK Version: 1.8.0_201 normalized as: 1.8.0-201
+         [INFO] OS Info: Arch: amd64 Family: unix Name: linux Version: 3.10.0-957.5.1.el7.x86_64
+         Raspbian:
+         [INFO] Maven Version: 3.6.0
+         [INFO] JDK Version: 1.8.0_65 normalized as: 1.8.0-65
+         [INFO] OS Info: Arch: arm Family: unix Name: linux Version: 4.9.35+
+         Mac OS High Sierra:
+         [INFO] Maven Version: 3.6.0
+         [INFO] JDK Version: 1.8.0_25 normalized as: 1.8.0-25
+         [INFO] OS Info: Arch: x86_64 Family: mac Name: mac os x Version: 10.11.6
+    -->
+    <profiles>
+        <profile>
+            <id>linux-amd64</id>
+            <activation>
+                <os>
+                    <name>linux</name>
+                    <arch>amd64</arch>
+                </os>
+            </activation>
+            <properties>
+                <!-- The CMake maven plugin understands cmake.root.dir -->
+                <cmake.root.dir>/opt/cmake</cmake.root.dir>
+
+                <!-- One of the generators defined at https://cmake.org/cmake/help/v3.7/manual/cmake-generators.7.html -->
+                <cmake.generator>Unix Makefiles</cmake.generator>
+                <!-- The classifier of the current platform. One of [windows-x86_32, windows-x86_64, linux-x86_32, linux-x86_64, linux-arm_32, mac-x86_64]. -->
+                <cmake.classifier>linux-x86_64</cmake.classifier>
+
+                <install.dir>/opt/parachute</install.dir>
+                <binary.suffix></binary.suffix>
+                <assembly.name>linux-distribution</assembly.name>
+            </properties>
+            <build>
+            </build>
+        </profile>
+        <profile>
+            <id>linux-arm</id>
+            <activation>
+                <os>
+                    <name>linux</name>
+                    <arch>arm</arch>
+                </os>
+            </activation>
+            <properties>
+                <!-- The CMake maven plugin understands cmake.root.dir -->
+                <cmake.root.dir>/opt/cmake</cmake.root.dir>
+
+                <!-- One of the generators defined at https://cmake.org/cmake/help/v3.7/manual/cmake-generators.7.html -->
+                <cmake.generator>Unix Makefiles</cmake.generator>
+                <!-- The classifier of the current platform. One of [windows-x86_32, windows-x86_64, linux-x86_32, linux-x86_64, linux-arm_32, mac-x86_64]. -->
+                <cmake.classifier>linux-arm_32</cmake.classifier>
+
+                <install.dir>/opt/parachute</install.dir>
+                <binary.suffix></binary.suffix>
+                <assembly.name>linux-distribution</assembly.name>
+            </properties>
+            <build>
+            </build>
+        </profile>
+        <profile>
+            <id>macosx</id>
+            <activation>
+                <os>
+                    <name>mac os x</name>
+                </os>
+            </activation>
+            <properties>
+                <!-- The CMake maven plugin understands cmake.root.dir -->
+                <cmake.root.dir>/opt/local</cmake.root.dir>
+
+                <!-- These are two of my properties I pass in to the CMake plugin, they're not known by the plugin innately -->
+                <!-- One of the generators defined at https://cmake.org/cmake/help/v3.7/manual/cmake-generators.7.html -->
+                <cmake.generator>Unix Makefiles</cmake.generator>
+                <!-- The classifier of the current platform. One of [windows-x86_32, windows-x86_64, linux-x86_32, linux-x86_64, linux-arm_32, mac-x86_64]. -->
+                <cmake.classifier>mac-x86_64</cmake.classifier>
+
+                <install.dir>/opt/parachute</install.dir>
+                <binary.suffix></binary.suffix>
+                <assembly.name>macos-distribution</assembly.name>
+            </properties>
+            <build>
+            </build>
+        </profile>
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <!-- The CMake maven plugin understands cmake.root.dir -->
+                <cmake.root.dir>C:/Program Files/CMake</cmake.root.dir>
+
+                <!-- These are two of my properties I pass in to the CMake plugin, they're not known by the plugin innately -->
+                <!-- One of the generators defined at https://cmake.org/cmake/help/v3.7/manual/cmake-generators.7.html -->
+                <cmake.generator>NMake Makefiles</cmake.generator>
+                <!-- The classifier of the current platform. One of [windows-x86_32, windows-x86_64, linux-x86_32, linux-x86_64, linux-arm_32, mac-x86_64]. -->
+                <cmake.classifier>windows-x86_64</cmake.classifier>
+
+                <install.dir>C:/parachute</install.dir>
+                <binary.suffix>.exe</binary.suffix>
+                <assembly.name>windows-distribution</assembly.name>
+            </properties>
+            <build>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.6.1</version>
+            </extension>
+        </extensions>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+    </dependencies>
+</project>
