@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.devzendo</groupId>
-    <artifactId>parachute-package</artifactId>
+    <artifactId>parachute</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Parachute Parallel Programming System</name>
@@ -32,9 +32,9 @@
         </license>
     </licenses>
     <scm>
-        <url>https://bitbucket.org/devzendo/parachute-package/</url>
-        <connection>scm:hg:https://bitbucket.org/devzendo/parachute-package/</connection>
-        <developerConnection>scm:hg:https://bitbucket.org/devzendo/parachute-package/</developerConnection>
+        <url>https://bitbucket.org/devzendo/parachute/</url>
+        <connection>scm:hg:https://bitbucket.org/devzendo/parachute/</connection>
+        <developerConnection>scm:hg:https://bitbucket.org/devzendo/parachute/</developerConnection>
     </scm>
     <developers>
         <developer>
@@ -47,6 +47,7 @@
     <properties>
         <cmake.binary.dir>cmake-build-debug</cmake.binary.dir>
         <download.cmake>false</download.cmake>
+        <platform.distribution.classifier>${transputer.emulator.classifier}</platform.distribution.classifier>
     </properties>
 
     <!-- use mvn enforcer:display-info to find platform name/family values -->
@@ -73,17 +74,10 @@
                 </os>
             </activation>
             <properties>
-                <!-- The CMake maven plugin understands cmake.root.dir -->
-                <cmake.root.dir>/opt/cmake</cmake.root.dir>
-
-                <!-- One of the generators defined at https://cmake.org/cmake/help/v3.7/manual/cmake-generators.7.html -->
-                <cmake.generator>Unix Makefiles</cmake.generator>
                 <!-- The classifier of the current platform. One of [windows-x86_32, windows-x86_64, linux-x86_32, linux-x86_64, linux-arm_32, mac-x86_64]. -->
                 <cmake.classifier>linux-x86_64</cmake.classifier>
-
-                <install.dir>/opt/parachute</install.dir>
-                <binary.suffix></binary.suffix>
-                <assembly.name>linux-distribution</assembly.name>
+                <transputer.emulator.classifier>${os.detected.release}-${os.detected.release.version}-${cmake.classifier}</transputer.emulator.classifier>
+                <archive.type>tar.gz</archive.type>
             </properties>
             <build>
             </build>
@@ -97,17 +91,10 @@
                 </os>
             </activation>
             <properties>
-                <!-- The CMake maven plugin understands cmake.root.dir -->
-                <cmake.root.dir>/opt/cmake</cmake.root.dir>
-
-                <!-- One of the generators defined at https://cmake.org/cmake/help/v3.7/manual/cmake-generators.7.html -->
-                <cmake.generator>Unix Makefiles</cmake.generator>
                 <!-- The classifier of the current platform. One of [windows-x86_32, windows-x86_64, linux-x86_32, linux-x86_64, linux-arm_32, mac-x86_64]. -->
                 <cmake.classifier>linux-arm_32</cmake.classifier>
-
-                <install.dir>/opt/parachute</install.dir>
-                <binary.suffix></binary.suffix>
-                <assembly.name>linux-distribution</assembly.name>
+                <transputer.emulator.classifier>${os.detected.release}-${os.detected.release.version}-${cmake.classifier}</transputer.emulator.classifier>
+                <archive.type>tar.gz</archive.type>
             </properties>
             <build>
             </build>
@@ -120,18 +107,10 @@
                 </os>
             </activation>
             <properties>
-                <!-- The CMake maven plugin understands cmake.root.dir -->
-                <cmake.root.dir>/opt/local</cmake.root.dir>
-
-                <!-- These are two of my properties I pass in to the CMake plugin, they're not known by the plugin innately -->
-                <!-- One of the generators defined at https://cmake.org/cmake/help/v3.7/manual/cmake-generators.7.html -->
-                <cmake.generator>Unix Makefiles</cmake.generator>
                 <!-- The classifier of the current platform. One of [windows-x86_32, windows-x86_64, linux-x86_32, linux-x86_64, linux-arm_32, mac-x86_64]. -->
                 <cmake.classifier>mac-x86_64</cmake.classifier>
-
-                <install.dir>/opt/parachute</install.dir>
-                <binary.suffix></binary.suffix>
-                <assembly.name>macos-distribution</assembly.name>
+                <transputer.emulator.classifier>${cmake.classifier}</transputer.emulator.classifier>
+                <archive.type>tar.gz</archive.type>
             </properties>
             <build>
             </build>
@@ -144,18 +123,10 @@
                 </os>
             </activation>
             <properties>
-                <!-- The CMake maven plugin understands cmake.root.dir -->
-                <cmake.root.dir>C:/Program Files/CMake</cmake.root.dir>
-
-                <!-- These are two of my properties I pass in to the CMake plugin, they're not known by the plugin innately -->
-                <!-- One of the generators defined at https://cmake.org/cmake/help/v3.7/manual/cmake-generators.7.html -->
-                <cmake.generator>NMake Makefiles</cmake.generator>
                 <!-- The classifier of the current platform. One of [windows-x86_32, windows-x86_64, linux-x86_32, linux-x86_64, linux-arm_32, mac-x86_64]. -->
                 <cmake.classifier>windows-x86_64</cmake.classifier>
-
-                <install.dir>C:/parachute</install.dir>
-                <binary.suffix>.exe</binary.suffix>
-                <assembly.name>windows-distribution</assembly.name>
+                <transputer.emulator.classifier>${cmake.classifier}</transputer.emulator.classifier>
+                <archive.type>zip</archive.type>
             </properties>
             <build>
             </build>
@@ -182,14 +153,41 @@
                         <id>make-package</id>
                         <phase>package</phase>
                         <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/distribution.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
                             <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-emulator</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <classifier>${transputer.emulator.classifier}</classifier>
+            <type>${archive.type}</type>
+        </dependency>
     </dependencies>
 </project>
