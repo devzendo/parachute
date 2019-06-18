@@ -1,0 +1,31 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>centos7</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <baseDirectory>/</baseDirectory>
+    <includeBaseDirectory>true</includeBaseDirectory>
+
+    <dependencySets>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>org.devzendo:transputer-emulator:tar.gz:centos-7-linux-x86_64</include>
+                <include>org.devzendo:tma-linux:tar.gz:linux</include>
+            </includes>
+            <unpack>true</unpack>
+        </dependencySet>
+    </dependencySets>
+
+    <files>
+        <file>
+            <source>${project.basedir}/README.md</source>
+            <outputDirectory>./</outputDirectory>
+            <destName>README-FIRST-parachute.md</destName>
+        </file>
+    </files>
+
+</assembly>

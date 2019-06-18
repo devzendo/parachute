@@ -159,37 +159,88 @@
 
         <plugins>
             <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-package</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.1</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src/main/assembly/distribution.xml</descriptor>
-                    </descriptors>
-                </configuration>
                 <executions>
+
                     <execution>
-                        <id>make-assembly</id>
+                        <id>centos7</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/centos-7-distribution.xml</descriptor>
+                            </descriptors>
+                        </configuration>
                     </execution>
+
+                    <execution>
+                        <id>macosx</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/macosx-distribution.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>raspbian</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/raspbian-9-distribution.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>ubuntu-16.04</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/ubuntu-16.04-distribution.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>ubuntu-18.04</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/ubuntu-18.04-distribution.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>windows</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/windows-distribution.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+
                 </executions>
             </plugin>
 
@@ -205,15 +256,12 @@
                             <goal>sign</goal>
                         </goals>
                         <configuration>
-                            <executable>${env.GPGEXE}</executable>
-                            <homedir>${env.GPGHOME}</homedir> <!-- must be picked up from environment: setting this as a profile parameter does NOT work, oddly -->
-                            <secretKeyring>${env.GPGHOME}/secring.gpg</secretKeyring>
-                            <publicKeyring>${env.GPGHOME}/pubring.gpg</publicKeyring>
+                            <executable>gpg2</executable>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
+<!--
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -222,10 +270,9 @@
                 <configuration>
                     <serverId>sonatype-nexus-staging</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <skipStagingRepositoryClose>true</skipStagingRepositoryClose> <!-- because we have many platforms to deploy from -->
                 </configuration>
             </plugin>
-
+-->
         </plugins>
     </build>
 
@@ -234,15 +281,71 @@
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
             <version>0.0.1</version>
-            <classifier>${transputer.emulator.classifier}</classifier>
-            <type>${archive.type}</type>
+            <classifier>mac-x86_64</classifier>
+            <type>tar.gz</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-emulator</artifactId>
+            <version>0.0.1</version>
+            <classifier>centos-7-linux-x86_64</classifier>
+            <type>tar.gz</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-emulator</artifactId>
+            <version>0.0.1</version>
+            <classifier>ubuntu-16.04-linux-x86_64</classifier>
+            <type>tar.gz</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-emulator</artifactId>
+            <version>0.0.1</version>
+            <classifier>ubuntu-18.04-linux-x86_64</classifier>
+            <type>tar.gz</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-emulator</artifactId>
+            <version>0.0.1</version>
+            <classifier>raspbian-9-linux-arm_32</classifier>
+            <type>tar.gz</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-emulator</artifactId>
+            <version>0.0.1</version>
+            <classifier>windows-x86_64</classifier>
+            <type>zip</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>tma-linux</artifactId>
+            <version>0.0.1</version>
+            <classifier>linux</classifier>
+            <type>tar.gz</type>
+        </dependency>
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>tma-osx</artifactId>
+            <version>0.0.1</version>
+            <classifier>mac</classifier>
+            <type>tar.gz</type>
         </dependency>
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>tma-windows</artifactId>
             <version>0.0.1</version>
-            <classifier>${os.classifier}</classifier>
-            <type>${archive.type}</type>
+            <classifier>windows</classifier>
+            <type>zip</type>
         </dependency>
     </dependencies>
 </project>

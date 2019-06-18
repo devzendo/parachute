@@ -1,0 +1,31 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>windows</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <baseDirectory>/</baseDirectory>
+    <includeBaseDirectory>true</includeBaseDirectory>
+
+    <dependencySets>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>org.devzendo:transputer-emulator:zip:windows-x86_64</include>
+                <include>org.devzendo:tma-windows:zip:windows</include>
+            </includes>
+            <unpack>true</unpack>
+        </dependencySet>
+    </dependencySets>
+
+    <files>
+        <file>
+            <source>${project.basedir}/README.md</source>
+            <outputDirectory>./</outputDirectory>
+            <destName>README-FIRST-parachute.md</destName>
+        </file>
+    </files>
+
+</assembly>
