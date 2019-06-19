@@ -23,7 +23,7 @@ http://devzendo.github.io/parachute
 
 Status
 ------
-First release 0.0.1 Midsummer 2019 (14 June 2019).
+First release 0.0.1 Midsummer 2019 (19 June 2019).
 
 In active development.
 
@@ -50,8 +50,10 @@ Release Notes
 Detailed release notes for each component can be found in its own README.md, all of which are contained in this
 distribution. The overall project release notes are...
 
-0.0.1 Midsummer 2019 - 14 June 2019
-First release on all platforms, containing transputer-emulator and transputer-macro-assembler, with 'hello world'.
+0.0.1 Midsummer 2019 - 19 June 2019
+First release on all platforms, containing:
+* transputer-emulator 0.0.1, with 'hello world'.
+* transputer-macro-assembler 0.0.1
 
 
 License
