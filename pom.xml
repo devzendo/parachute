@@ -55,6 +55,10 @@
         </repository>
     </distributionManagement>
 
+    <properties>
+        <transputer.emulator.version>0.0.1</transputer.emulator.version>
+        <transputer.macro.assembler.version>0.0.1</transputer.macro.assembler.version>
+    </properties>
     <build>
         <plugins>
             <plugin>
@@ -175,10 +179,14 @@
     </build>
 
     <dependencies>
+        <!-- Produced by a single (main) module, with profiles per-OS, running on multiple Jenkins nodes. The build
+             runs in two phases, controlled by profiles. 'build' produces these artifacts, which are archived via
+             Jenkins and copied to the master build. 'deploy' deploys all of them en masse to Nexus OSSRH, from where
+             this build collects them. See the assembly plugin descriptors above... -->
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
-            <version>0.0.1</version>
+            <version>${transputer.emulator.version}</version>
             <classifier>mac-x86_64</classifier>
             <type>tar.gz</type>
         </dependency>
@@ -186,7 +194,7 @@
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
-            <version>0.0.1</version>
+            <version>${transputer.emulator.version}</version>
             <classifier>centos-7-linux-x86_64</classifier>
             <type>tar.gz</type>
         </dependency>
@@ -194,7 +202,7 @@
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
-            <version>0.0.1</version>
+            <version>${transputer.emulator.version}</version>
             <classifier>ubuntu-16.04-linux-x86_64</classifier>
             <type>tar.gz</type>
         </dependency>
@@ -202,7 +210,7 @@
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
-            <version>0.0.1</version>
+            <version>${transputer.emulator.version}</version>
             <classifier>ubuntu-18.04-linux-x86_64</classifier>
             <type>tar.gz</type>
         </dependency>
@@ -210,7 +218,7 @@
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
-            <version>0.0.1</version>
+            <version>${transputer.emulator.version}</version>
             <classifier>raspbian-9-linux-arm_32</classifier>
             <type>tar.gz</type>
         </dependency>
@@ -218,30 +226,31 @@
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
-            <version>0.0.1</version>
+            <version>${transputer.emulator.version}</version>
             <classifier>windows-x86_64</classifier>
             <type>zip</type>
         </dependency>
 
 
+        <!-- Produced by multiple modules with their own packaging; the linux module works on all our Linuxes -->
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>tma-linux</artifactId>
-            <version>0.0.1</version>
+            <version>${transputer.macro.assembler.version}</version>
             <classifier>linux</classifier>
             <type>tar.gz</type>
         </dependency>
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>tma-osx</artifactId>
-            <version>0.0.1</version>
+            <version>${transputer.macro.assembler.version}</version>
             <classifier>mac</classifier>
             <type>tar.gz</type>
         </dependency>
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>tma-windows</artifactId>
-            <version>0.0.1</version>
+            <version>${transputer.macro.assembler.version}</version>
             <classifier>windows</classifier>
             <type>zip</type>
         </dependency>
