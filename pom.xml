@@ -32,9 +32,9 @@
         </license>
     </licenses>
     <scm>
-        <url>https://bitbucket.org/devzendo/parachute/</url>
-        <connection>scm:hg:https://bitbucket.org/devzendo/parachute/</connection>
-        <developerConnection>scm:hg:https://bitbucket.org/devzendo/parachute/</developerConnection>
+        <url>https://github.com/devzendo/parachute/.git</url>
+        <connection>scm:git:https://github.com/devzendo/parachute/.git</connection>
+        <developerConnection>scm:git:git@github.com:devzendo/parachute/.git</developerConnection>
     </scm>
     <developers>
         <developer>

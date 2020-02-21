@@ -1,4 +1,3 @@
-syntax: glob
 .DS_Store
 *.iml
 .idea
@@ -6,6 +5,5 @@ syntax: glob
 **/*.*~
 **/*.swp
 cmake-build-debug
-syntax: regexp
-^target$
+target
 
