@@ -15,7 +15,8 @@
         A macro assembler that understands a subset of MASM 6 directives, for
         building for the Transputer.
         A port of eForth to the above emulator.
-        (Apache License v2) 2005-2019 Matt Gumbley, DevZendo.org
+        A C compiler that works with the above macro assembler.
+        (Apache License v2) 2005-2024 Matt Gumbley, DevZendo.org
     </description>
     <url>https://devzendo.github.io/parachute</url>
 
@@ -56,8 +57,8 @@
     </distributionManagement>
 
     <properties>
-        <transputer.emulator.version>0.0.1</transputer.emulator.version>
-        <transputer.macro.assembler.version>0.0.1</transputer.macro.assembler.version>
+        <transputer.emulator.version>0.0.2-SNAPSHOT</transputer.emulator.version>
+        <transputer.macro.assembler.version>0.0.2-SNAPSHOT</transputer.macro.assembler.version>
     </properties>
     <build>
         <plugins>
@@ -65,19 +66,6 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.1</version>
                 <executions>
-
-                    <execution>
-                        <id>centos7</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <descriptors>
-                                <descriptor>src/main/assembly/centos-7-distribution.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </execution>
 
                     <execution>
                         <id>macosx</id>
@@ -93,40 +81,27 @@
                     </execution>
 
                     <execution>
-                        <id>raspbian</id>
+                        <id>raspberry-pi-debian-12</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>src/main/assembly/raspbian-9-distribution.xml</descriptor>
+                                <descriptor>src/main/assembly/raspberry-pi-debian-12-distribution.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
 
                     <execution>
-                        <id>ubuntu-16.04</id>
+                        <id>ubuntu-24.04</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>src/main/assembly/ubuntu-16.04-distribution.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>ubuntu-18.04</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <descriptors>
-                                <descriptor>src/main/assembly/ubuntu-18.04-distribution.xml</descriptor>
+                                <descriptor>src/main/assembly/ubuntu-24.04-distribution.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
@@ -195,7 +170,7 @@
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
             <version>${transputer.emulator.version}</version>
-            <classifier>centos-7-linux-x86_64</classifier>
+            <classifier>ubuntu-24.04-linux-x86_64</classifier>
             <type>tar.gz</type>
         </dependency>
 
@@ -203,23 +178,7 @@
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
             <version>${transputer.emulator.version}</version>
-            <classifier>ubuntu-16.04-linux-x86_64</classifier>
-            <type>tar.gz</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.devzendo</groupId>
-            <artifactId>transputer-emulator</artifactId>
-            <version>${transputer.emulator.version}</version>
-            <classifier>ubuntu-18.04-linux-x86_64</classifier>
-            <type>tar.gz</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.devzendo</groupId>
-            <artifactId>transputer-emulator</artifactId>
-            <version>${transputer.emulator.version}</version>
-            <classifier>raspbian-9-linux-arm_32</classifier>
+            <classifier>raspberry-pi-debian-12-linux-arm_64</classifier>
             <type>tar.gz</type>
         </dependency>
 

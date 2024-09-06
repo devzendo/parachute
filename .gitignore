@@ -6,4 +6,4 @@
 **/*.swp
 cmake-build-debug
 target
-
+settings.json

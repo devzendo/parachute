@@ -5,17 +5,17 @@ systems we support:
 * transputer-emulator
 * transputer-macro-assembler
 * transputer-eforth (in a forthcoming release)
+* retro-c-compiler (maybe)
 
 It runs on:
-* Apple macOS (El Capitan, later versions untested)
+* Apple macOS (Catalina, later versions untested)
 * Windows 10
-* CentOS 7.6
-* Ubuntu 16.04/18.04 
-* Raspbian Stretch.
+* Ubuntu 24.04
+* Raspberry Pi Debian 12.
 
 It is part of the [Parachute Project](https://devzendo.github.io/parachute).
 
-(C) 2005-2019 Matt J. Gumbley
+(C) 2005-2024 Matt J. Gumbley
 matt.gumbley@devzendo.org
 @mattgumbley @devzendo
 http://devzendo.github.io/parachute
@@ -38,6 +38,7 @@ First release:
 
 Second release:
 * Change the NodeServer to be compatible with the Inmos compatible iServer protocol.
+* Ported to macOS (Catalina), Linux (Ubuntu 24.04, Rasperry Pi Debian 12), Windows 10.
 
 Third release:
 * Include eForth.
@@ -59,6 +60,6 @@ First release on all platforms, containing:
 License
 -------
 This code is released under the Apache 2.0 License: http://www.apache.org/licenses/LICENSE-2.0.html.
-(C) 2005-2019 Matt Gumbley, DevZendo.org
+(C) 2005-2024 Matt Gumbley, DevZendo.org
 
 
