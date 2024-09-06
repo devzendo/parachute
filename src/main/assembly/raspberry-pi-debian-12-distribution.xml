@@ -1,7 +1,7 @@
 <assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
-    <id>ubuntu-18.04</id>
+    <id>raspberry-pi-debian-12</id>
     <formats>
         <format>tar.gz</format>
     </formats>
@@ -13,7 +13,7 @@
             <useProjectArtifact>false</useProjectArtifact>
             <outputDirectory>./</outputDirectory>
             <includes>
-                <include>org.devzendo:transputer-emulator:tar.gz:ubuntu-18.04-linux-x86_64</include>
+                <include>org.devzendo:transputer-emulator:tar.gz:raspberry-pi-debian-12-linux-arm_64</include>
                 <include>org.devzendo:tma-linux:tar.gz:linux</include>
             </includes>
             <unpack>true</unpack>
