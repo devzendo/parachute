@@ -68,14 +68,27 @@
                 <executions>
 
                     <execution>
-                        <id>macosx</id>
+                        <id>macosx-x86_64</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>src/main/assembly/macosx-distribution.xml</descriptor>
+                                <descriptor>src/main/assembly/macosx-x86_64-distribution.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>macosx-aarch64</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/macosx-aarch64-distribution.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
