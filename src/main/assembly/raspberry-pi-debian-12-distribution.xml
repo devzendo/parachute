@@ -13,7 +13,7 @@
             <useProjectArtifact>false</useProjectArtifact>
             <outputDirectory>./</outputDirectory>
             <includes>
-                <include>org.devzendo:transputer-emulator:tar.gz:raspberry-pi-debian-12-linux-aarch_64</include>
+                <include>org.devzendo:transputer-emulator:tar.gz:debian-12-linux-aarch_64</include>
                 <include>org.devzendo:tma-linux:tar.gz:linux</include>
             </includes>
             <unpack>true</unpack>
