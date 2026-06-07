@@ -163,7 +163,23 @@
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
             <version>${transputer.emulator.version}</version>
+            <classifier>mac-aarch64</classifier>
+            <type>tar.gz</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-emulator</artifactId>
+            <version>${transputer.emulator.version}</version>
             <classifier>mac-x86_64</classifier>
+            <type>tar.gz</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-emulator</artifactId>
+            <version>${transputer.emulator.version}</version>
+            <classifier>debian-12-linux-aarch_64</classifier>
             <type>tar.gz</type>
         </dependency>
 
@@ -179,7 +195,7 @@
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
             <version>${transputer.emulator.version}</version>
-            <classifier>raspberry-pi-debian-12-linux-arm_64</classifier>
+            <classifier>pi-pico-arm-none-eabi</classifier>
             <type>tar.gz</type>
         </dependency>
 
@@ -190,7 +206,6 @@
             <classifier>windows-x86_64</classifier>
             <type>zip</type>
         </dependency>
-
 
         <!-- Produced by multiple modules with their own packaging; the linux module works on all our Linuxes -->
         <dependency>
