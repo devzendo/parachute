@@ -13,7 +13,7 @@
             <useProjectArtifact>false</useProjectArtifact>
             <outputDirectory>./</outputDirectory>
             <includes>
-                <include>org.devzendo:transputer-emulator:tar.gz:mac-aarch64</include>
+                <include>org.devzendo:transputer-emulator:tar.gz:mac-x86_64</include>
                 <include>org.devzendo:tma-osx:tar.gz:mac</include>
             </includes>
             <unpack>true</unpack>
