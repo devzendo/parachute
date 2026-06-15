@@ -1,22 +1,22 @@
 # parachute
 
-**A modern, open, fully-understandable, useful personal computing stack — built around the Transputer (in emulation).**
+**An open, simple and useful personal computing stack — built around the Transputer (in emulation).**
 
-Parachute is a long-term project to build a small systems architecture from the ground up: emulator, toolchain, OS kernel, and applications — designed to run on cheap, widely available hardware, and small enough that a single person can hold the whole thing in their head.
+Parachute is a long-term project to build a small systems architecture from the ground up: emulator, toolchain, OS kernel, and applications — designed to run on cheap, widely available hardware, and small enough that a single person can understand the whole system.
 
 ## Why does this exist?
 
-Modern computing systems have grown beyond anyone's full comprehension. Monolithic kernels, opaque toolchains, and sprawling dependencies mean that even expert engineers only ever understand a thin slice of the stack they build on. That wasn't always true — and it doesn't have to be.
+Modern computing systems have grown beyond anyone's full comprehension. Complex user interfaces with a bewildering mishmash of interface styles, labyrinthine internals, monolithic kernels, vast learning curves to surmount should you want to develop for them, and masses of library dependencies. Even expert engineers only ever understand a small part of the stack they build on. That wasn't always true — and it doesn't have to be, going forward. Small systems offer a solution.
 
-The Transputer offers a different starting point. A simple 32-bit CPU with built-in support for multitasking, communication, and parallelism, it was designed from the ground up around Hoare's Communicating Sequential Processes — a clean mathematical model for describing systems as networks of parallel processes. Its language, occam, makes that structure explicit. A microkernel OS falls out of it almost naturally.
+Other retrocomputing platforms continue the development of existing 8- and 16-bit systems. The Transputer offers a different starting point: A simple 32-bit CPU with built-in support for multitasking, communication, and parallelism, it was designed around a proven model for describing systems as networks of parallel processes. Its language, occam, makes that structure explicit. A microkernel OS falls out of it almost naturally.
 
-Distributing OS components across a cluster of Transputer nodes isn't an architectural trick — it's the architecture working as intended. Individual nodes are modest. Connected in a pipeline or mesh, they can be capable. And crucially: every part of the system can be understood.
+Distributing OS components across a cluster of Transputer nodes isn't an architectural trick — it's the architecture working as intended. Individual nodes are modest, but are connected in a network to the other nodes in the system. The components that run on each node are small, and easy to understand. 
 
 ## Inspiration
 
-Parachute stands on the shoulders of people who believed software could be lean, comprehensible, and purposeful:
+Parachute is guided by the ideas of people who believed software could be lean, comprehensible, and purposeful:
 
-* **The Inmos Transputer, occam, and CSP** — the technical foundation (with other languages)
+* **The Inmos Transputer, occam, and C.A.R. Hoare's CSP** — the technical foundation (with other languages)
 * **Niklaus Wirth's Project Oberon** and his essay "_A Plea for Lean Software_" — a philosophy of restraint
 * **The Amiga OS** — elegance and capability in a small footprint
 * **Psion PDAs and the SIBO/EPOC operating systems** — productive, focused, astonishingly efficient
@@ -24,26 +24,29 @@ Parachute stands on the shoulders of people who believed software could be lean,
 
 Think: the early Mac, the Amiga, early Windows — but parallel, distributed, and built on a CPU that was genuinely ahead of its time.
 
-And remember the PDA? Pocket-sized. Days of battery life on AAs. Distraction-free and productive. The smartphone was not its natural successor.
+And remember the PDA? Pocket-sized. Days of battery life on AAs. Distraction-free and productive. The smartphone was not its natural successor. Touch screens are necessary, but not sufficient for productive work - proper keyboards are essential. 
 
 ## Goals
 
-* **A portable, open-source Transputer emulator** — inspired by one I wrote years ago, rebuilt properly
+* **A portable, open-source Transputer emulator** — inspired by one I wrote years ago, rewritten for portability to the popular operating systems
 * **Embedded on cheap, available hardware** — microcontrollers and single-board computers with small touch screens and optional keyboards
 * **A toolchain** — assembler, Small-C, eForth, occam; enough to build real things
 * **A distributed microkernel OS** — kernel, drivers, libraries, and a simple UI
-* **The same applications run everywhere** — desktop emulator or embedded node, same binary
+* **The same applications run everywhere** — desktop emulator or embedded node, same software
 * **Small. Simple. Understandable.** — if you can't read the whole system, it's already too big
 
 
 ## Who is this for?
 
+Those who yearn for a return to simple, distraction-free devices, that won't become obsolete, due to them being buildable from open technology.
+
 Developers and tinkerers who remember when personal computing felt like a frontier — or who wish they'd been there.
+
 People who want to understand their tools all the way down.
+
 Anyone who thinks the direction of travel in modern systems (more abstraction, more complexity, 
 more magic, less freedom, no right-to-repair) isn't the only possible direction.
 
-Those who yearn for a return to simple, distraction-free devices, that won't become obsolete, due to them being buildable from open technology.
 
 This is a community project as much as a technical one. _There's a lot to build. Come help._
 
@@ -82,36 +85,42 @@ Detailed documentation for each component lives in its own README.
 
 | Platform | Notes |
 |---|---|
-| Raspberry Pi Pico 1 & 2 | Supported |
+| Raspberry Pi Pico 1 | Supported |
 | Cheap Yellow Display | Forthcoming |
  
 ---
 
 ## Status & Roadmap
 
-Parachute is in active development. The first release appeared in June 2019; the project has grown steadily since. Full roadmap details for each component are in their respective READMEs — the overall arc is:
+Parachute is in active development. The first release appeared in June 2019; the project has grown steadily since.
 
 **Release 0.0.1 — Midsummer 2019**
-- Emulates an "integer T805" Transputer
+- Emulates an "integer T805" Transputer, that connects to a 'NodeServer' process providing access to host filesystem and console
 - Ported to macOS El Capitan, Linux (Ubuntu 16.04/18.04, CentOS 7.6, Raspbian Stretch), and Windows 10
+- Development tools: MASM-like macro assembler
 - "Hello World" running end-to-end via the original NodeServer implementation
 
 **Release 0.0.2** - In progress
-- NodeServer replaced with an iServer-compatible implementation
-- Transputer Validation Suite conformance: 46 pass, 8 fail 
+- NodeServer's custom protocol replaced with an iServer-compatible implementation (iServer was Inmos' standard host server, providing boot/debug/IO facilities)
+- Allows validation using Mike Brüstle's Transputer Validation Suite. Conformance: 46 instructions pass, 8 fail 
 - "Hello World" now uses iServer protocol
+- Better debug support for eForth
 - Platform support modernised: macOS (Catalina, Tahoe), Linux (Ubuntu 24.04, Raspberry Pi Debian 12), Windows 10
-- Emulator ported to Raspberry Pi Pico, with bit-banged link implementation
+- Emulator ported to Raspberry Pi Pico, with bit-banged (slow) GPIO link implementation, and one link and a diagnostic channel exposed over USB CDC serial
+- An IServer link that can run over a TTY (Linux/macOS) or COM port (Windows) to connect to a Pi Pico emulator.
+- Emulator can now operate its boot/peek/poke protocol from any link
+- USB CDC to link adapter on Raspberry Pi Pico
+- Known problem: The IServer's file handling does not yet prevent directory traversal vulnerabilities.
 
 **Release 0.0.3** — Forthcoming
-- iServer improvements
+- More complete iServer implementation.
 - eForth and Small-C compiler included
 - Faster link implementation for the Raspberry Pi Pico using PIO
 
 **Release 0.0.4** - Vision
 - Complete integer Transputer emulation
-- Port to the 'Cheap Yellow Display'
-- occam tools included
+- Port to the ESP-32 'Cheap Yellow Display'
+- Inmos occam tools included
 - Start of the OS and device drivers
 
 **Beyond that** — who knows? Suggestions welcome!
