@@ -130,6 +130,51 @@ Parachute is in active development. The first release appeared in June 2019; the
 
 All releases are available from the [Downloads](https://devzendo.github.io/parachute-download/) page.
 
+## Installation
+
+The project releases archives, not installable packages - it's up to you to extract these and set up your PATH
+to be able to use the software from the command line.
+
+The typical install location is:
+- macOS/Linux: `/opt/parachute`
+- Windows: `C:\parachute`
+- Raspberry Pi Pico: `temulate.uf2` - copy it to your Pico with BOOTSEL held down - see the `README-pico.md` file.
+
+However you can extract the release anywhere that you have permission to. 
+
+### For macOS/Linux
+For example, if you're using Ubuntu (macOS would be similar):
+```
+cd /opt
+sudo mkdir parachute
+sudo chown <myuser>:<myuser> parachute
+cd parachute
+tar xzvf ~/Downloads/parachute-0.0.2-ubuntu-24.04.tar.gz
+```
+This will create a `bin`, `lib`, `include` directory structure, with several .md documentation files (including this
+one) at the top level.
+
+Then just add the `/opt/parachute/bin` directory to your PATH. For Ubuntu, this could be done by adding the line
+`export PATH=/opt/parachute/bin:$PATH` at the end of your `~/.bashrc` file. 
+
+Then log out and back in again for this to take effect.
+
+### For Windows 10
+If you want to install the release outside of your own user directory, you'll need to launch a File Explorer as an
+Administrator: From the Start menu, type 'explorer', and when it shows up in
+the search system, there should be a 'Run as administrator' option. Choose that. In the explorer that starts, choose
+`My PC`, `C:`, and then create a new folder called 'parachute', and copy the release archive there. Right-click on it,
+and 'Extract here'.
+
+Or, create the 'parachute' directory inside your user directory.
+
+Then, you'll need to add the `bin` directory to your PATH. Go into 'Settings', then on the right hand side of the
+settings window, choose 'Advanced settings'. In the dialog that appears, choose 'Environment variables'. You may see
+the user environment variables, and PATH should be in there. Edit this, and add the 'bin' path you have created to the
+list, for instance, `C:\parachute\bin`.
+
+Then log out and back in again for this to take effect.
+
 ## AI Declaration
 
 I use Claude.ai occasionally for assistance; all its output is vetted thoroughly by me.
