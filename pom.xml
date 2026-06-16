@@ -132,6 +132,19 @@
                         </configuration>
                     </execution>
 
+                    <execution>
+                        <id>pico</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/pico-distribution.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+
                 </executions>
             </plugin>
 
