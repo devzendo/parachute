@@ -59,6 +59,8 @@
     <properties>
         <transputer.emulator.version>0.0.2-SNAPSHOT</transputer.emulator.version>
         <transputer.macro.assembler.version>0.0.2-SNAPSHOT</transputer.macro.assembler.version>
+        <transputer.eforth.version>1.2-SNAPSHOT</transputer.eforth.version>
+
     </properties>
     <build>
         <plugins>
@@ -255,5 +257,14 @@
             <classifier>windows</classifier>
             <type>zip</type>
         </dependency>
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-eforth</artifactId>
+            <version>${transputer.eforth.version}</version>
+            <classifier>transputer</classifier>
+            <type>tar.gz</type>
+        </dependency>
+
     </dependencies>
 </project>

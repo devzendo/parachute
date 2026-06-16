@@ -110,11 +110,15 @@ Parachute is in active development. The first release appeared in June 2019; the
 - An IServer link that can run over a TTY (Linux/macOS) or COM port (Windows) to connect to a Pi Pico emulator.
 - Emulator can now operate its boot/peek/poke protocol from any link
 - USB CDC to link adapter on Raspberry Pi Pico
-- Known problem: The IServer's file handling does not yet prevent directory traversal vulnerabilities.
+- eForth included
+- Known problems: 
+  - The IServer's file handling does not yet prevent directory traversal vulnerabilities.
+  - eForth does not yet successfully start up.
 
 **Release 0.0.3** — Forthcoming
 - More complete iServer implementation.
-- eForth and Small-C compiler included
+- eForth problems resolved
+- Small-C compiler included
 - Faster link implementation for the Raspberry Pi Pico using PIO
 
 **Release 0.0.4** - Vision
