@@ -60,8 +60,9 @@
         <transputer.emulator.version>0.0.2-SNAPSHOT</transputer.emulator.version>
         <transputer.macro.assembler.version>0.0.2-SNAPSHOT</transputer.macro.assembler.version>
         <transputer.eforth.version>1.2-SNAPSHOT</transputer.eforth.version>
-
+        <parachute.book.version>0.0.2-SNAPSHOT</parachute.book.version>
     </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -147,6 +148,56 @@
                         </configuration>
                     </execution>
 
+                </executions>
+            </plugin>
+
+            <!-- Now copy the parachute book version in (it's already a dependency of this), and make its pdf an
+            artifact. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-book-pdf</id>
+                        <phase>prepare-package</phase>
+                        <goals><goal>copy</goal></goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.devzendo</groupId>
+                                    <artifactId>parachute-book</artifactId>
+                                    <version>${parachute.book.version}</version>
+                                    <type>pdf</type>
+                                    <classifier>book</classifier>
+                                    <outputDirectory>${project.build.directory}</outputDirectory>
+                                    <destFileName>parachute-book.pdf</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-book-artifacts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${project.build.directory}/parachute-book.pdf</file>
+                                    <type>pdf</type>
+                                    <classifier>book</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 
@@ -266,5 +317,12 @@
             <type>tar.gz</type>
         </dependency>
 
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>parachute-book</artifactId>
+            <version>${parachute.book.version}</version>
+            <classifier>book</classifier>
+            <type>pdf</type>
+        </dependency>
     </dependencies>
 </project>

@@ -56,16 +56,17 @@ This is a community project as much as a technical one. _There's a lot to build.
 
 Parachute is built from the following components, which are assembled together into each release:
 
-| Sub-project | Description | Status |
-|---|---|---|
-| [transputer-emulator](transputer-emulator) | Cross-platform emulator and host/device interface daemons | Released |
-| [transputer-macro-assembler](transputer-macro-assembler) | Macro assembler in the style of MASM, targeting the Transputer | Released |
-| [transputer-eforth](transputer-eforth) | eForth language implementation | Forthcoming |
-| [transputer-k-r-c-compiler](transputer-k-r-c-compiler) | Small-C compiler and assembler, written by Óscar Toledo Gutiérrez, translated from Spanish | Forthcoming |
-| [retro-c-compiler](retro-c-compiler) | Embryonic C compiler | Exploratory |
+| Sub-project                                              | Description                                                                                | Status |
+|----------------------------------------------------------|--------------------------------------------------------------------------------------------|---|
+| [parachute-book](parachute-book)                         | The main documentation for the project as a whole                                          | Released |
+| [transputer-emulator](transputer-emulator)               | Cross-platform emulator and host/device interface daemons                                  | Released |
+| [transputer-macro-assembler](transputer-macro-assembler) | Macro assembler in the style of MASM, targeting the Transputer                             | Released |
+| [transputer-eforth](transputer-eforth)                   | eForth language implementation                                                             | Forthcoming |
+| [transputer-k-r-c-compiler](transputer-k-r-c-compiler)   | Small-C compiler and assembler, written by Óscar Toledo Gutiérrez, translated from Spanish | Forthcoming |
+| [retro-c-compiler](retro-c-compiler)                     | Embryonic C compiler                                                                       | Exploratory |
 
-Detailed documentation for each component lives in its own README.
- 
+Detailed documentation for each component lives in its own README, which is included in the downloadable archive for each platform.
+
 ---
 
 ## Platform Support
@@ -133,6 +134,11 @@ Parachute is in active development. The first release appeared in June 2019; the
 ## Download
 
 All releases are available from the [Downloads](https://devzendo.github.io/parachute-download/) page.
+
+There is a release for each platform, which also contains the README files for each sub-project.
+
+The primary documentation is 'The Parachute Book', the latest version of which is included with each release. This forms
+a tutorial and reference for using the platform on desktop and embedded systems.
 
 ## Installation
 
