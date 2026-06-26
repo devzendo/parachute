@@ -58,7 +58,7 @@
 
     <properties>
         <transputer.emulator.version>0.0.2-SNAPSHOT</transputer.emulator.version>
-        <transputer.macro.assembler.version>0.0.2-SNAPSHOT</transputer.macro.assembler.version>
+        <transputer.macro.assembler.version>0.0.2</transputer.macro.assembler.version>
         <transputer.eforth.version>1.2-SNAPSHOT</transputer.eforth.version>
         <parachute.book.version>0.0.2-SNAPSHOT</parachute.book.version>
     </properties>
