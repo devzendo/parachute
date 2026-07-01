@@ -112,6 +112,7 @@ Parachute is in active development. The first release appeared in June 2019; the
 - Emulator can now operate its boot/peek/poke protocol from any link
 - USB CDC to link adapter on Raspberry Pi Pico
 - eForth and Small-C included
+- Add tserve.{sh,ps1} script to run temulate and iserver to run a program together.
 - Known problems: 
   - The IServer's file handling does not yet prevent directory traversal vulnerabilities.
   - eForth does not yet successfully start up.
