@@ -16,6 +16,7 @@
                 <include>org.devzendo:transputer-emulator:zip:windows-x86_64</include>
                 <include>org.devzendo:tma-windows:zip:windows</include>
                 <include>org.devzendo:transputer-eforth:tar.gz:transputer</include>
+                <include>org.devzendo:transputer-k-r-c-compiler:tar.gz:transputer</include>
             </includes>
             <unpack>true</unpack>
         </dependencySet>

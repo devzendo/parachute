@@ -60,6 +60,7 @@
         <transputer.emulator.version>0.0.2-SNAPSHOT</transputer.emulator.version>
         <transputer.macro.assembler.version>0.0.2</transputer.macro.assembler.version>
         <transputer.eforth.version>1.2-SNAPSHOT</transputer.eforth.version>
+        <transputer.k-r-c-compiler.version>1.0.1-SNAPSHOT</transputer.k-r-c-compiler.version>
         <parachute.book.version>0.0.2-SNAPSHOT</parachute.book.version>
     </properties>
 
@@ -313,6 +314,14 @@
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-eforth</artifactId>
             <version>${transputer.eforth.version}</version>
+            <classifier>transputer</classifier>
+            <type>tar.gz</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-k-r-c-compiler</artifactId>
+            <version>${transputer.k-r-c-compiler.version}</version>
             <classifier>transputer</classifier>
             <type>tar.gz</type>
         </dependency>

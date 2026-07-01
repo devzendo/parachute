@@ -16,6 +16,7 @@
                 <include>org.devzendo:transputer-emulator:tar.gz:debian-12-linux-aarch_64</include>
                 <include>org.devzendo:tma-linux:tar.gz:linux</include>
                 <include>org.devzendo:transputer-eforth:tar.gz:transputer</include>
+                <include>org.devzendo:transputer-k-r-c-compiler:tar.gz:transputer</include>
             </includes>
             <unpack>true</unpack>
         </dependencySet>
