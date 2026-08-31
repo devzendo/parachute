@@ -102,9 +102,9 @@ Parachute is in active development. The first release appeared in June 2019; the
 - "Hello World" running end-to-end via the original NodeServer implementation
 
 **Release 0.0.2** - In progress
-- NodeServer's custom protocol replaced with an iServer-compatible implementation (iServer was Inmos' standard host server, providing boot/debug/IO facilities)
+- NodeServer's custom protocol replaced with an IServer-compatible implementation (iServer was Inmos' standard host server, providing boot/debug/IO facilities)
 - Allows validation using Mike Brüstle's Transputer Validation Suite. Conformance: 46 instructions pass, 8 fail 
-- "Hello World" now uses iServer protocol
+- "Hello World" now uses IServer protocol
 - Better debug support for eForth
 - Platform support modernised: macOS (Catalina, Tahoe), Linux (Ubuntu 24.04, Raspberry Pi Debian 12), Windows 10
 - Emulator ported to Raspberry Pi Pico, with bit-banged (slow) GPIO link implementation, and one link and a diagnostic channel exposed over USB CDC serial
@@ -112,13 +112,14 @@ Parachute is in active development. The first release appeared in June 2019; the
 - Emulator can now operate its boot/peek/poke protocol from any link
 - USB CDC to link adapter on Raspberry Pi Pico
 - eForth and Small-C included
-- Add tserve.{sh,ps1} script to run temulate and iserver to run a program together.
+- Added emuserver, which is a combined emulator and IServer that allows easy execution of a hosted program.
 - Known problems: 
   - The IServer's file handling does not yet prevent directory traversal vulnerabilities.
+  - The IServer's text mode handling is not working correctly on Windows.
   - eForth does not yet successfully start up.
 
 **Release 0.0.3** — Forthcoming
-- More complete iServer implementation.
+- More complete IServer implementation.
 - eForth problems resolved
 - Small-C compiler included
 - Faster link implementation for the Raspberry Pi Pico using PIO
