@@ -246,7 +246,6 @@
             <classifier>mac-aarch64</classifier>
             <type>tar.gz</type>
         </dependency>
-
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
@@ -254,7 +253,6 @@
             <classifier>mac-x86_64</classifier>
             <type>tar.gz</type>
         </dependency>
-
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
@@ -262,7 +260,6 @@
             <classifier>debian-12-linux-aarch_64</classifier>
             <type>tar.gz</type>
         </dependency>
-
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
@@ -270,7 +267,6 @@
             <classifier>ubuntu-24.04-linux-x86_64</classifier>
             <type>tar.gz</type>
         </dependency>
-
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
@@ -278,7 +274,6 @@
             <classifier>pi-pico-arm-none-eabi</classifier>
             <type>tar.gz</type>
         </dependency>
-
         <dependency>
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-emulator</artifactId>
@@ -322,8 +317,36 @@
             <groupId>org.devzendo</groupId>
             <artifactId>transputer-k-r-c-compiler</artifactId>
             <version>${transputer.k-r-c-compiler.version}</version>
-            <classifier>transputer</classifier>
+            <classifier>mac-aarch64</classifier>
             <type>tar.gz</type>
+        </dependency>
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-k-r-c-compiler</artifactId>
+            <version>${transputer.k-r-c-compiler.version}</version>
+            <classifier>mac-x86_64</classifier>
+            <type>tar.gz</type>
+        </dependency>
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-k-r-c-compiler</artifactId>
+            <version>${transputer.k-r-c-compiler.version}</version>
+            <classifier>debian-12-linux-aarch_64</classifier>
+            <type>tar.gz</type>
+        </dependency>
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-k-r-c-compiler</artifactId>
+            <version>${transputer.k-r-c-compiler.version}</version>
+            <classifier>ubuntu-24.04-linux-x86_64</classifier>
+            <type>tar.gz</type>
+        </dependency>
+        <dependency>
+            <groupId>org.devzendo</groupId>
+            <artifactId>transputer-k-r-c-compiler</artifactId>
+            <version>${transputer.k-r-c-compiler.version}</version>
+            <classifier>windows-x86_64</classifier>
+            <type>zip</type>
         </dependency>
 
         <dependency>
