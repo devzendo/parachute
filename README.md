@@ -117,12 +117,14 @@ Parachute is in active development. The first release appeared in June 2019; the
   - The IServer's file handling does not yet prevent directory traversal vulnerabilities.
   - The IServer's text mode handling is not working correctly on Windows.
   - eForth does not yet successfully start up.
+  - High priority processes and interruption are not supported.
 
 **Release 0.0.3** — Forthcoming
 - More complete IServer implementation.
 - eForth problems resolved
 - Small-C compiler included
 - Faster link implementation for the Raspberry Pi Pico using PIO
+- High priority processes and interruption are supported.
 
 **Release 0.0.4** - Vision
 - Complete integer Transputer emulation
