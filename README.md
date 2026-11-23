@@ -111,20 +111,20 @@ Parachute is in active development. The first release appeared in June 2019; the
 - An IServer link that can run over a TTY (Linux/macOS) or COM port (Windows) to connect to a Pi Pico emulator.
 - Emulator can now operate its boot/peek/poke protocol from any link
 - USB CDC to link adapter on Raspberry Pi Pico
-- eForth and Small-C included
+- eForth and K&R C included
 - Added emuserver, which is a combined emulator and IServer that allows easy execution of a hosted program.
 - Known problems: 
   - The IServer's file handling does not yet prevent directory traversal vulnerabilities.
   - The IServer's text mode handling is not working correctly on Windows.
   - eForth does not yet successfully start up.
-  - High priority processes and interruption are not supported.
+  - High priority processes and interruption may not be fully supported.
 
 **Release 0.0.3** — Forthcoming
-- More complete IServer implementation.
+- More complete IServer implementation
 - eForth problems resolved
-- Small-C compiler included
+- K&R compiler included with iserverstdio.c
 - Faster link implementation for the Raspberry Pi Pico using PIO
-- High priority processes and interruption are supported.
+- High priority processes and interruption are supported
 
 **Release 0.0.4** - Vision
 - Complete integer Transputer emulation
@@ -133,7 +133,8 @@ Parachute is in active development. The first release appeared in June 2019; the
 - Start of the OS and device drivers
 
 **Beyond that** — who knows? Suggestions welcome!
-
+- Analyse, Error: mostly ignored so far, so a release devoted to it would be good
+- Debugger: would be very useful
 
 ## Download
 
